@@ -1,0 +1,1102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Japan Trip — Oct 6–23</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<style>
+  :root{
+    --bg:#f6f3ec;
+    --surface:#ffffff;
+    --surface-alt:#ede8dc;
+    --ink:#242320;
+    --ink-soft:#68635a;
+    --ink-faint:#9c9587;
+    --accent:#2c3e63;
+    --accent-soft:#e4e8f1;
+    --accent-2:#b5482f;
+    --accent-2-soft:#f5e4de;
+    --line:#ddd5c3;
+    --rail-move:#2c3e63;
+    --rail-stay:var(--bg);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#181712;
+      --surface:#211f1a;
+      --surface-alt:#292620;
+      --ink:#ece7db;
+      --ink-soft:#b3ab9c;
+      --ink-faint:#7d7666;
+      --accent:#9fb2dd;
+      --accent-soft:#2a3550;
+      --accent-2:#e3906f;
+      --accent-2-soft:#402923;
+      --line:#3a362c;
+      --rail-move:#9fb2dd;
+      --rail-stay:var(--bg);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#181712;
+    --surface:#211f1a;
+    --surface-alt:#292620;
+    --ink:#ece7db;
+    --ink-soft:#b3ab9c;
+    --ink-faint:#7d7666;
+    --accent:#9fb2dd;
+    --accent-soft:#2a3550;
+    --accent-2:#e3906f;
+    --accent-2-soft:#402923;
+    --line:#3a362c;
+    --rail-move:#9fb2dd;
+    --rail-stay:var(--bg);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Zen Kaku Gothic New', system-ui, sans-serif;
+    line-height:1.55;
+    font-size:15.5px;
+  }
+  h1,h2,h3{
+    font-family:'Shippori Mincho', serif;
+    text-wrap:balance;
+    font-weight:700;
+    margin:0;
+  }
+  a{color:var(--accent);}
+  .num{font-variant-numeric:tabular-nums;}
+
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px 80px;}
+
+  /* ---------- hero ---------- */
+  header.hero{
+    padding:56px 20px 34px;
+    border-bottom:1px solid var(--line);
+    background:
+      radial-gradient(circle at 88% -10%, var(--accent-soft) 0%, transparent 55%),
+      var(--bg);
+  }
+  .hero-inner{max-width:920px;margin:0 auto;}
+  .eyebrow{
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--accent-2);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  h1.title{font-size:2.5rem;color:var(--ink);}
+  .subtitle{color:var(--ink-soft);margin-top:8px;font-size:1.02rem;max-width:60ch;}
+  .stat-row{
+    display:flex;flex-wrap:wrap;gap:28px;
+    margin-top:30px;padding-top:24px;
+    border-top:1px solid var(--line);
+  }
+  .stat b{
+    display:block;font-family:'Shippori Mincho',serif;
+    font-size:1.5rem;color:var(--ink);
+  }
+  .stat span{font-size:.76rem;color:var(--ink-faint);letter-spacing:.04em;text-transform:uppercase;}
+
+  /* ---------- route nav ---------- */
+  nav.route{
+    position:sticky;top:0;z-index:5;
+    background:color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    overflow-x:auto;
+  }
+  nav.route .track{
+    max-width:920px;margin:0 auto;
+    display:flex;gap:4px;padding:10px 20px;
+    white-space:nowrap;
+  }
+  nav.route a{
+    text-decoration:none;color:var(--ink-soft);
+    font-size:.82rem;padding:6px 12px;border-radius:20px;
+    border:1px solid transparent;
+  }
+  nav.route a:hover{border-color:var(--line);color:var(--ink);}
+  nav.route a::after{content:"→";margin-left:10px;color:var(--ink-faint);}
+  nav.route a:last-child::after{content:"";}
+
+  /* ---------- legs / timeline ---------- */
+  main{padding-top:36px;}
+  section.leg{margin-bottom:8px;scroll-margin-top:56px;}
+  .leg-head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:16px;flex-wrap:wrap;
+    padding:20px 0 16px;
+    border-top:2px solid var(--ink);
+    margin-top:36px;
+  }
+  section.leg:first-of-type .leg-head{margin-top:0;}
+  .leg-head h2{font-size:1.55rem;}
+  .leg-meta{text-align:right;}
+  .leg-dates{font-size:.85rem;color:var(--accent-2);font-weight:700;}
+  .leg-nights{font-size:.76rem;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.04em;}
+
+  .day{
+    display:grid;
+    grid-template-columns:34px 1fr;
+    column-gap:16px;
+  }
+  .rail{
+    display:flex;flex-direction:column;align-items:center;
+  }
+  .rail .dot{
+    width:13px;height:13px;border-radius:50%;
+    margin-top:5px;flex:none;
+    border:2.5px solid var(--rail-move);
+    background:var(--rail-move);
+  }
+  .day.stay .rail .dot{background:var(--rail-stay);}
+  .rail .line{width:2px;flex:1;background:var(--line);margin-top:2px;}
+  .day:last-child .rail .line{display:none;}
+
+  .day-body{padding-bottom:30px;}
+  .day-date{
+    font-size:.78rem;font-weight:700;color:var(--ink-faint);
+    text-transform:uppercase;letter-spacing:.05em;
+    margin-top:2px;
+  }
+  .day-title{font-size:1.08rem;font-weight:700;margin:2px 0 10px;}
+  .day.move .day-title{color:var(--accent);}
+
+  .transit{
+    background:var(--surface-alt);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:12px 14px;
+    margin-bottom:12px;
+    font-size:.87rem;
+  }
+  .transit .leg-step{
+    display:flex;justify-content:space-between;gap:12px;
+    padding:5px 0;
+  }
+  .transit .leg-step + .leg-step{border-top:1px dashed var(--line);}
+  .transit .route-name{color:var(--ink);}
+  .transit .route-cost{color:var(--ink-soft);white-space:nowrap;}
+  .transit .note{color:var(--ink-soft);font-size:.82rem;margin-top:8px;}
+  .choice-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-faint);margin:10px 0 5px;font-weight:700;}
+  .choice-row{display:flex;gap:10px;flex-wrap:wrap;}
+  .choice-opt{
+    flex:1;min-width:190px;
+    border:1px solid var(--line);border-radius:8px;
+    padding:9px 11px;background:var(--surface);
+  }
+  .choice-opt .oname{font-weight:700;font-size:.86rem;}
+  .choice-opt .ometa{display:flex;justify-content:space-between;gap:8px;font-size:.78rem;color:var(--ink-soft);margin-top:3px;}
+  .choice-opt .ohint{font-size:.78rem;color:var(--accent-2);margin-top:5px;}
+
+  .activities{font-size:.92rem;color:var(--ink);}
+  .activities ul{margin:4px 0 0;padding-left:18px;}
+  .activities li{margin-bottom:4px;}
+  .alt-note{font-size:.85rem;color:var(--ink-soft);margin-top:8px;}
+
+  .lodging{
+    margin-top:12px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+    background:var(--surface);
+  }
+  .lodging .booked{
+    display:flex;justify-content:space-between;gap:12px;align-items:flex-start;
+    padding:12px 14px;
+    background:var(--accent-soft);
+  }
+  .lodging .name{font-weight:700;font-size:.95rem;}
+  .lodging .place{font-size:.8rem;color:var(--ink-soft);margin-top:2px;}
+  .lodging .price{
+    font-weight:700;color:var(--accent-2);white-space:nowrap;
+    font-family:'Shippori Mincho',serif;font-size:1.05rem;
+  }
+  .lodging .price small{display:block;font-family:'Zen Kaku Gothic New',sans-serif;font-weight:400;font-size:.68rem;color:var(--ink-faint);}
+  .lodging .details{
+    display:flex;flex-wrap:wrap;gap:14px 22px;
+    padding:10px 14px;font-size:.8rem;color:var(--ink-soft);
+    border-top:1px solid var(--line);
+  }
+  .lodging .details b{color:var(--ink);font-weight:500;}
+  .lodging .flag{font-size:.8rem;color:var(--accent-2);padding:8px 14px 12px;border-top:1px solid var(--line);}
+
+  details.more{margin-top:10px;font-size:.85rem;}
+  details.more summary{
+    cursor:pointer;color:var(--accent);font-weight:500;
+    list-style:none;
+  }
+  details.more summary::-webkit-details-marker{display:none;}
+  details.more summary::before{content:"+ ";}
+  details.more[open] summary::before{content:"– ";}
+  details.more .opt-group{margin-top:10px;padding-left:2px;}
+  details.more .opt-group h4{
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--ink-faint);margin-bottom:4px;font-weight:700;
+  }
+  details.more .opt-row{
+    display:flex;justify-content:space-between;gap:12px;
+    padding:4px 0;color:var(--ink-soft);
+    border-bottom:1px dotted var(--line);
+  }
+  details.more .opt-row span:last-child{white-space:nowrap;}
+
+  /* ---------- appendix ---------- */
+  section.appendix{
+    margin-top:48px;padding-top:28px;
+    border-top:2px solid var(--ink);
+  }
+  section.appendix h2{font-size:1.4rem;margin-bottom:16px;}
+  .app-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:36px;}
+  .app-card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px;}
+  .app-card h3{font-size:1rem;font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;margin-bottom:8px;}
+  .app-card p{font-size:.88rem;color:var(--ink-soft);margin:0 0 6px;}
+  .app-card ul{margin:6px 0 0;padding-left:18px;font-size:.88rem;color:var(--ink-soft);}
+
+  table.budget, table.shop{
+    width:100%;border-collapse:collapse;font-size:.88rem;margin-bottom:36px;
+  }
+  table.budget caption, table.shop caption{
+    text-align:left;font-weight:700;margin-bottom:8px;font-size:1rem;
+    font-family:'Zen Kaku Gothic New',sans-serif;
+  }
+  table.budget th, table.budget td, table.shop th, table.shop td{
+    text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);
+  }
+  table.budget th, table.shop th{color:var(--ink-faint);font-weight:600;font-size:.76rem;text-transform:uppercase;letter-spacing:.03em;}
+  table.budget td:last-child, table.budget th:last-child{text-align:right;font-variant-numeric:tabular-nums;}
+  table.budget tr.total td{font-weight:700;color:var(--ink);}
+  .table-scroll{overflow-x:auto;}
+
+  footer{
+    margin-top:40px;padding-top:20px;border-top:1px solid var(--line);
+    font-size:.8rem;color:var(--ink-faint);
+  }
+
+  @media (max-width:640px){
+    h1.title{font-size:1.9rem;}
+    .app-grid{grid-template-columns:1fr;}
+    .day{grid-template-columns:20px 1fr;column-gap:10px;}
+    .lodging .booked{flex-direction:column;}
+  }
+
+  /* ---------- tabs ---------- */
+  nav.tabs{
+    display:flex;gap:2px;
+    padding:10px 20px 0;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .tab-btn{
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    font-size:.86rem;font-weight:700;
+    background:none;border:none;cursor:pointer;
+    color:var(--ink-faint);
+    padding:10px 16px 12px;
+    border-bottom:2px solid transparent;
+    margin-bottom:-1px;
+  }
+  .tab-btn:hover{color:var(--ink);}
+  .tab-btn.active{color:var(--ink);border-bottom-color:var(--accent-2);}
+  .panel{display:none;}
+  .panel.active{display:block;}
+
+  /* ---------- overview (no-scroll) ---------- */
+  #panel-overview.active{display:flex;flex-direction:column;}
+  .ov-head{padding:16px 20px 0;flex:none;}
+  .ov-head h2{font-size:1.15rem;}
+  .ov-head p{color:var(--ink-soft);font-size:.82rem;margin:4px 0 0;}
+  .ov-legend{display:flex;gap:16px;margin-top:10px;font-size:.72rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.03em;}
+  .ov-legend span{display:inline-flex;align-items:center;gap:6px;}
+  .ov-legend i{width:9px;height:9px;border-radius:2px;display:inline-block;}
+  .ov-flow{
+    flex:1;min-height:0;overflow-y:auto;
+    display:flex;flex-direction:column;justify-content:space-evenly;
+    padding:10px 24px 18px;max-width:960px;margin:0 auto;width:100%;
+  }
+  .ov-stop{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;
+  }
+  .ov-stop .place{
+    font-family:'Shippori Mincho',serif;font-weight:700;font-size:1.15rem;
+  }
+  .ov-stop .place small{
+    display:block;font-family:'Zen Kaku Gothic New',sans-serif;font-weight:500;
+    font-size:.72rem;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.03em;margin-top:1px;
+  }
+  .ov-stop .nights{
+    font-size:.78rem;font-weight:700;color:var(--accent-2);
+    background:var(--accent-2-soft);padding:4px 10px;border-radius:20px;white-space:nowrap;
+  }
+  .ov-link{
+    display:flex;align-items:center;gap:10px;
+    padding:4px 0 4px 4px;margin-left:6px;
+    border-left:2px solid var(--line);
+  }
+  .ov-link .mode-dot{width:8px;height:8px;border-radius:2px;flex:none;margin-left:-5px;background:var(--surface);border:2px solid var(--line);}
+  .ov-link.train .mode-dot{background:var(--accent);border-color:var(--accent);}
+  .ov-link.bus .mode-dot{background:var(--accent-2);border-color:var(--accent-2);}
+  .ov-link.taxi .mode-dot{background:var(--ink-faint);border-color:var(--ink-faint);}
+  .ov-link .mode-text{font-size:.78rem;color:var(--ink-soft);}
+  .ov-link .mode-text b{color:var(--ink);font-weight:700;}
+  .ov-link .mode-figs{margin-left:auto;font-size:.76rem;color:var(--ink-faint);white-space:nowrap;font-variant-numeric:tabular-nums;}
+
+  /* ---------- map ---------- */
+  #panel-map.active{display:flex;flex-direction:column;}
+  .map-head{padding:14px 20px;flex:none;display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);}
+  .map-head h2{font-size:1.05rem;}
+  .map-head a{font-size:.82rem;color:var(--accent);text-decoration:none;}
+  .map-head a:hover{text-decoration:underline;}
+  .map-frame-wrap{flex:1;min-height:0;}
+  .map-frame-wrap iframe{width:100%;height:100%;border:0;display:block;}
+  .map-fallback{padding:10px 20px;font-size:.78rem;color:var(--ink-faint);flex:none;border-top:1px solid var(--line);}
+</style>
+</head>
+<body>
+
+<nav class="tabs">
+  <button class="tab-btn active" data-tab="itinerary">Itinerary</button>
+  <button class="tab-btn" data-tab="overview">Overview</button>
+  <button class="tab-btn" data-tab="map">Map</button>
+</nav>
+
+<section id="panel-itinerary" class="panel active">
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Trip Plan</div>
+    <h1 class="title">Japan, Oct 6–23</h1>
+    <p class="subtitle">Kansai in, Narita out — Osaka, Kyoto, the Tango peninsula, two onsen towns, Kanazawa, Shirakawa-go, Takayama, Matsumoto, and four days in Tokyo.</p>
+    <div class="stat-row">
+      <div class="stat"><b class="num">18</b><span>Days</span></div>
+      <div class="stat"><b class="num">8</b><span>Bases</span></div>
+      <div class="stat"><b class="num">2</b><span>Travelers</span></div>
+      <div class="stat"><b>¥45–99k</b><span>Transport budget</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="route">
+  <div class="track">
+    <a href="#osaka">Osaka</a>
+    <a href="#kyoto">Kyoto</a>
+    <a href="#ine">Ine</a>
+    <a href="#kinosaki">Kinosaki Onsen</a>
+    <a href="#kanazawa">Kanazawa</a>
+    <a href="#takayama">Takayama</a>
+    <a href="#okuhida">Okuhida Onsen</a>
+    <a href="#tokyo">Tokyo</a>
+  </div>
+</nav>
+
+<div class="wrap">
+<main>
+
+  <!-- OSAKA -->
+  <section class="leg" id="osaka">
+    <div class="leg-head">
+      <h2>Osaka — Namba</h2>
+      <div class="leg-meta"><div class="leg-dates">Oct 6 – 8</div><div class="leg-nights">2 nights</div></div>
+    </div>
+
+    <div class="day move">
+      <div class="rail"><div class="dot"></div><div class="line"></div></div>
+      <div class="day-body">
+        <div class="day-date">Mon, Oct 6</div>
+        <div class="day-title">Kansai Airport → Namba</div>
+        <div class="transit">
+          <div class="leg-step"><span class="route-name">Flight lands 14:35 — immigration, ICOCA (~¥5,000 top-up), pocket WiFi pickup</span></div>
+          <div class="choice-label">Namba → Kansai Airport: pick one</div>
+          <div class="choice-row">
+            <div class="choice-opt">
+              <div class="oname">Nankai Rapid</div>
+              <div class="ometa"><span>35–40 min</span><span>~¥1,500</span></div>
+              <div class="ohint">Take this if you're out of immigration by ~16:00</div>
+            </div>
+            <div class="choice-opt">
+              <div class="oname">Nankai Airport Express</div>
+              <div class="ometa"><span>~45 min</span><span>~¥1,000</span></div>
+              <div class="ohint">Cheaper &amp; more frequent — better if you're delayed</div>
+            </div>
+          </div>
+          <div class="note">Arrange luggage forwarding to later hotels via Yamato TA-Q-BIN. Expect hotel arrival 17:00–17:30.</div>
+        </div>
+        <div class="lodging">
+          <div class="booked">
+            <div><div class="name">Miro Hotel Namba</div><div class="place">Namba · 10 min from station</div></div>
+            <div class="price">¥91<small>per night</small></div>
+          </div>
+          <div class="details">
+            <span><b>Check-in</b> 15:00</span>
+            <span><b>Check-out</b> before 11:00</span>
+            <span>No luggage storage after check-out</span>
+          </div>
+          <details class="more"><summary>7 other Namba/Osaka options considered</summary>
+            <div class="opt-group">
+              <div class="opt-row"><span>Apartment Hotel 11 Dotonbori 9 — Namba</span><span>¥116</span></div>
+              <div class="opt-row"><span>Hotel Abitare Namba West — Namba</span><span>¥127</span></div>
+              <div class="opt-row"><span>Apartment Hotel 11 Nambaminami 5 — Namba</span><span>¥109</span></div>
+              <div class="opt-row"><span>WELLSTAY Shinsekai Wakyo — Tennoji</span><span>¥111</span></div>
+              <div class="opt-row"><span>HOTEL HILLARYS Shinsaibashi — Honmachi</span><span>¥133</span></div>
+              <div class="opt-row"><span>Hotel Forza Osaka Kitahama — Honmachi</span><span>¥142</span></div>
+              <div class="opt-row"><span>hotel androoms Shin-Osaka — Shin-Osaka</span><span>¥132</span></div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+
+    <div class="day stay">
+      <div class="rail"><div class="dot"></div><div class="line"></div></div>
+      <div class="day-body">
+        <div class="day-date">Tue, Oct 7</div>
+        <div class="day-title">Sakai day trip</div>
+        <div class="transit">
+          <div class="leg-step"><span class="route-name">Nankai Main Line, Namba → Sakai (12–15 min)</span><span class="route-cost">~¥300 each way</span></div>
+        </div>
+        <div class="activities">
+          <ul>
+            <li>Historic blacksmith workshops producing kitchen knives</li>
+            <li>Traditional incense shops, tea-ceremony history, knife-making museums</li>
+          </ul>
+        </div>
+        <div class="alt-note">Alternatives on the table: Tamba Sasayama (potteries, samurai heritage, black soybeans) or Tondabayashi (old merchant town, local cafés).</div>
+      </div>
+    </div>
+
+    <div class="day move">
+      <div class="rail"><div class="dot"></div></div>
+      <div class="day-body">
+        <div class="day-date">Wed, Oct 8</div>
+        <div class="day-title">Osaka → Kyoto</div>
+        <div class="transit">
+          <div class="leg-step"><span class="route-name">Osaka Metro Midosuji Line, Daikokucho → Umeda</span></div>
+          <div class="leg-step"><span class="route-name">JR Special Rapid, Umeda → Kyoto (~1 h)</span><span class="route-cost">~¥700–900</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KYOTO -->
+  <section class="leg" id="kyoto">
+    <div class="leg-head">
+      <h2>Kyoto</h2>
+      <div class="leg-meta"><div class="leg-dates">Oct 8 – 12</div><div class="leg-nights">4 nights</div></div>
+    </div>
+
+    <div class="day stay">
+      <div class="rail"><div class="dot"></div><div class="line"></div></div>
+      <div class="day-body">
+        <div class="day-date">Wed, Oct 8</div>
+        <div class="day-title">Arrive &amp; check in</div>
+        <div class="activities"><ul><li>TBD — arrival evening, settle in</li></ul></div>
+        <div class="lodging">
+          <div class="booked">
+            <div><div class="name">Home Inn Kujo Kawaramachi</div><div class="place">Japanese-style room</div></div>
+            <div class="price">¥370<small>for 4 nights</small></div>
+          </div>
+          <div class="details">
+            <span><b>Check-in</b> 15:00–21:00</span>
+            <span><b>Check-out</b> before 10:00</span>
+            <span>Pay exact cash at check-in</span>
+            <span>Luggage storage after check-out</span>
+            <span>Try the negi-miso breakfast</span>
+          </div>
+          <details class="more"><summary>Also priced out: a Hiroshima overnight (not on the current route)</summary>
+            <div class="opt-group">
+              <h4>Hondori district, Oct 8–9</h4>
+              <div class="opt-row"><span>Hotel Hokke Club Hiroshima — breakfast included</span><span>¥166</span></div>
+              <div class="opt-row"><span>Hotel Vista Hiroshima</span><span>¥132</span></div>
+              <div class="opt-row"><span>Super Hotel Hiroshima</span><span>¥118</span></div>
+              <div class="opt-row"><span>Quintessa Hotel Hiroshima Kanayamacho</span><span>¥118</span></div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+
+    <div class="day stay">
+      <div class="rail"><div class="dot"></div><div class="line"></div></div>
+      <div class="day-body">
+        <div class="day-date">Thu, Oct 9</div>
+        <div class="day-title">Nishijin district</div>
+        <div class="activities"><ul><li>Weaving studios, textile workshops, kimono artisans</li></ul></div>
+      </div>
+    </div>
+
+    <div class="day stay">
+      <div class="rail"><div class="dot"></div><div class="line"></div></div>
+      <div class="day-body">
+        <div class="day-date">Fri, Oct 10</div>
+        <div class="day-title">Fushimi</div>
+        <div class="activities"><ul><li>Sake district — canals, breweries, warehouses</li></ul></div>
+      </div>
+    </div>
+
+    <div class="day stay">
+      <div class="rail"><div class="dot"></div><div class="line"></div></div>
+      <div class="day-body">
+        <div class="day-date">Sat, Oct 11</div>
+        <div class="day-title">Uji (optional)</div>
+        <div class="activities"><ul><li>Tea houses, matcha culture, riverside walks</li></ul></div>
+      </div>
+    </div>
+
+    <div class="day move">
+      <div class="rail"><div class="dot"></div></div>
+      <div class="day-body">
+        <div class="day-date">Sun, Oct 12</div>
+        <div class="day-title">Kyoto → Amanohashidate → Ine</div>
+        <div class="transit">
+          <div class="leg-step"><span class="route-name">Limited Express Hashidate, Kyoto → Amanohashidate (~2 h 10)</span><span class="route-cost">~¥5,000–6,000</span></div>
+          <div class="leg-step"><span class="route-name">Tankai Bus, Amanohashidate → Ine (50–60 min)</span><span class="route-cost">~¥400–1,000</span></div>
+          <div class="note">Arrival 16:30–17:00.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INE -->
+  <section class="leg" id="ine">
+    <div class="leg-head">
+      <h2>Ine</h2>
+      <div class="leg-meta"><div class="leg-dates">Oct 12 – 13</div><div class="leg-nights">1 night</div></div>
+    </div>
+    <div class="day stay">
+      <div class="rail"><div class="dot"></div><div class="line"></div></div>
+      <div class="day-body">
+        <div class="day-date">Sun, Oct 12</div>
+        <div class="day-title">Amanohashidate &amp; the funaya boathouses</div>
+        <div class="activities"><ul><li>Amanohashidate Viewland, the sandbar walk, the chairlift</li><li>Ine no Funaya for fresh fish, right on the water</li></ul></div>
+        <div class="lodging">
+          <div class="booked">
+            <div><div class="name">海蔵寺 宿坊 櫻海</div><div class="place">Kaizōji temple lodging (shukubō)</div></div>
+            <div class="price">¥215<small>the night</small></div>
+          </div>
+          <div class="details">
+            <span><b>Check-in</b> 15:00–21:00</span>
+            <span><b>Check-out</b> before 10:00</span>
+            <span>No meals — book a restaurant ahead</span>
+          </div>
+          <div class="flag">Reserve dinner in advance: Kajiya (seafood &amp; wagyu) or Ine Hand-Made Soba-Kochi. Lunch takeout at ウミャー堂; breakfast onigiri at 川崎屋 from 10:30; coffee at Hakuzu or Ine Cafe (also reserve). Also on the list: Nagisa, Hyoshiro, Sushi Ichi.</div>
+        </div>
+      </div>
+    </div>
+    <div class="day move">
+      <div class="rail"><div class="dot"></div></div>
+      <div class="day-body">
+        <div class="day-date">Mon, Oct 13</div>
+        <div class="day-title">Ine → Kinosaki Onsen</div>
+        <div class="transit">
+          <div class="leg-step"><span class="route-name">Bus to Amanohashidate → Kyoto Tango Railway to Toyooka → JR to Kinosaki</span><span class="route-cost">~¥2,500–4,000</span></div>
+          <div class="note">Arriving around 13:00.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KINOSAKI -->
+  <section class="leg" id="kinosaki">
+    <div class="leg-head">
+      <h2>Kinosaki Onsen</h2>
+      <div class="leg-meta"><div class="leg-dates">Oct 13 – 14</div><div class="leg-nights">1 night</div></div>
+    </div>
+    <div class="day stay">
+      <div class="rail"><div class="dot"></div><div class="line"></div></div>
+      <div class="day-body">
+        <div class="day-date">Mon, Oct 13</div>
+        <div class="day-title">Onsen hopping</div>
+        <div class="activities"><ul><li>Onsen-hopping the town's seven public bathhouses in yukata</li></ul></div>
+        <div class="lodging">
+          <div class="booked">
+            <div><div class="name">Kobayashiya</div><div class="place">Kinosaki Onsen</div></div>
+            <div class="price">¥374<small>the night</small></div>
+          </div>
+          <div class="details">
+            <span><b>Check-in</b> 15:00–18:00</span>
+            <span><b>Check-out</b> 07:00–10:00</span>
+            <span>Japanese breakfast included</span>
+            <span>Kaiseki upgrade w/ pottery-grilled snow crab +¥2,200</span>
+          </div>
+          <details class="more"><summary>13 other onsen options considered, by area</summary>
+            <div class="opt-group">
+              <h4>Ohara area</h4>
+              <div class="opt-row"><span>Kurama Onsen — dinner &amp; breakfast, no private onsen</span><span>¥430</span></div>
+              <div class="opt-row"><span>Yumoto Onsen Ohara Sansou — private onsen, shared bath/toilet</span><span>¥226</span></div>
+              <div class="opt-row"><span>Ryokan Sumiya Kihoan — private onsen</span><span>¥300</span></div>
+              <div class="opt-row"><span>Kyo No Minshuku Ohara No Sato — private onsen</span><span>¥200</span></div>
+            </div>
+            <div class="opt-group">
+              <h4>Arashiyama</h4>
+              <div class="opt-row"><span>Kyoto Arashiyama Onsen Ryokan Togetsutei — private onsen</span><span>¥400</span></div>
+            </div>
+            <div class="opt-group">
+              <h4>Kinosaki town</h4>
+              <div class="opt-row"><span>Mikuniya</span><span>¥207</span></div>
+              <div class="opt-row"><span>Onishiya Suishoen</span><span>¥210</span></div>
+              <div class="opt-row"><span>Yuraku Kinosaki Spa &amp; Gardens</span><span>—</span></div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+    <div class="day move">
+      <div class="rail"><div class="dot"></div></div>
+      <div class="day-body">
+        <div class="day-date">Tue, Oct 14</div>
+        <div class="day-title">Kinosaki → Kanazawa</div>
+        <div class="transit">
+          <div class="leg-step"><span class="route-name">Limited Express Kinosaki → Thunderbird → Hokuriku Shinkansen (3.5–4.5 h)</span><span class="route-cost">~¥8,000–10,000</span></div>
+          <div class="note">Arriving around 14:00.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KANAZAWA -->
+  <section class="leg" id="kanazawa">
+    <div class="leg-head">
+      <h2>Kanazawa</h2>
+      <div class="leg-meta"><div class="leg-dates">Oct 14 – 16</div><div class="leg-nights">2 nights</div></div>
+    </div>
+    <div class="day stay">
+      <div class="rail"><div class="dot"></div><div class="line"></div></div>
+      <div class="day-body">
+        <div class="day-date">Tue, Oct 14</div>
+        <div class="day-title">Arrive &amp; check in</div>
+        <div class="activities"><ul><li>TBD — arriving ~14:00, rest of the day open</li></ul></div>
+        <div class="lodging">
+          <div class="booked">
+            <div><div class="name">Hotel Amanek Kanazawa</div></div>
+            <div class="price">¥159<small>per night</small></div>
+          </div>
+          <div class="details">
+            <span><b>Check-in</b> 15:00–00:00</span>
+            <span><b>Check-out</b> before 11:00</span>
+            <span>No meals</span>
+            <span>Restaurant to try: Coil</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day stay">
+      <div class="rail"><div class="dot"></div><div class="line"></div></div>
+      <div class="day-body">
+        <div class="day-date">Wed, Oct 15</div>
+        <div class="day-title">Gold leaf, ceramics, Kenroku-en</div>
+        <div class="activities">
+          <ul>
+            <li>Gold leaf workshops, Kutani ceramics, Kaga Yuzen silk dyeing — book one artisan workshop</li>
+            <li>Omicho Market; Higashi Chaya early morning; Kenroku-en right at opening</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="day move">
+      <div class="rail"><div class="dot"></div></div>
+      <div class="day-body">
+        <div class="day-date">Thu, Oct 16</div>
+        <div class="day-title">Kanazawa → Shirakawa-go → Takayama</div>
+        <div class="transit">
+          <div class="leg-step"><span class="route-name">Nohi / Hokutetsu Bus, Kanazawa → Shirakawa-go (~75 min)</span><span class="route-cost">~¥2,000–2,500</span></div>
+          <div class="leg-step"><span class="route-name">Nohi Bus, Shirakawa-go → Takayama (~50 min)</span><span class="route-cost">~¥2,000–2,500</span></div>
+        </div>
+        <div class="activities"><ul><li>Shirakawa-go gasshō-zukuri village on the way through</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAKAYAMA -->
+  <section class="leg" id="takayama">
+    <div class="leg-head">
+      <h2>Takayama</h2>
+      <div class="leg-meta"><div class="leg-dates">Oct 16 – 18</div><div class="leg-nights">2 nights</div></div>
+    </div>
+    <div class="day stay">
+      <div class="rail"><div class="dot"></div><div class="line"></div></div>
+      <div class="day-body">
+        <div class="day-date">Thu, Oct 16</div>
+        <div class="day-title">Arrive &amp; check in</div>
+        <div class="activities"><ul><li>TBD — arrival evening, settle in</li></ul></div>
+        <div class="lodging">
+          <div class="booked">
+            <div><div class="name">Backpackers Jinya</div><div class="place">Shared bathroom</div></div>
+            <div class="price">¥92<small>per night</small></div>
+          </div>
+          <div class="details">
+            <span><b>Check-in</b> 15:00–22:00</span>
+            <span><b>Check-out</b> before 11:00</span>
+            <span>Free laundry at Backpackers Hida Takayama, 600 m (¥100 detergent)</span>
+            <span>Luggage storage after check-out OK</span>
+            <span>¥200/person accommodation tax on arrival</span>
+          </div>
+          <div class="flag">Restaurants to try: Takumiya Yasukawa-ten (yakiniku) and Tori To Maguro Kame (creative small plates).</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day stay">
+      <div class="rail"><div class="dot"></div><div class="line"></div></div>
+      <div class="day-body">
+        <div class="day-date">Fri, Oct 17</div>
+        <div class="day-title">Old town &amp; morning market</div>
+        <div class="activities"><ul><li>Old merchant district, sake breweries</li><li>The morning market</li></ul></div>
+      </div>
+    </div>
+    <div class="day move">
+      <div class="rail"><div class="dot"></div></div>
+      <div class="day-body">
+        <div class="day-date">Sat, Oct 18</div>
+        <div class="day-title">Takayama → Okuhida Onsen</div>
+        <div class="transit">
+          <div class="leg-step"><span class="route-name">Nohi Bus, Takayama Bus Center → Fukuji Onsen (~90 min)</span><span class="route-cost">~¥1,800–2,500</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OKUHIDA -->
+  <section class="leg" id="okuhida">
+    <div class="leg-head">
+      <h2>Okuhida Onsen</h2>
+      <div class="leg-meta"><div class="leg-dates">Oct 18 – 19</div><div class="leg-nights">1 night</div></div>
+    </div>
+    <div class="day stay">
+      <div class="rail"><div class="dot"></div><div class="line"></div></div>
+      <div class="day-body">
+        <div class="day-date">Sat, Oct 18</div>
+        <div class="day-title">Outdoor baths &amp; kaiseki</div>
+        <div class="activities"><ul><li>Outdoor baths, mountain scenery</li><li>Kaiseki dinner; hiking around Kakimochi</li></ul></div>
+        <div class="alt-note">Okuhida Onsen-go spans five villages — Hirayu, Fukuji, Shin-Hirayu, Tochio, Shin-Hotaka — strung along the Takayama–Matsumoto road.</div>
+        <div class="lodging">
+          <div class="booked">
+            <div><div class="name">Yumoto Chōza</div></div>
+            <div class="price">¥368<small>the night</small></div>
+          </div>
+          <div class="details">
+            <span><b>Check-in</b> 15:00–18:00</span>
+            <span><b>Check-out</b> before 10:00</span>
+            <span>Breakfast &amp; dinner included</span>
+          </div>
+          <details class="more"><summary>7 other options considered, by village</summary>
+            <div class="opt-group">
+              <h4>Hirayu Onsen</h4>
+              <div class="opt-row"><span>Miyama Ouan</span><span>¥230</span></div>
+            </div>
+            <div class="opt-group">
+              <h4>Fukuji Onsen</h4>
+              <div class="opt-row"><span>Motoyu Magokuro</span><span>—</span></div>
+            </div>
+            <div class="opt-group">
+              <h4>Shin-Hirayu Onsen</h4>
+              <div class="opt-row"><span>Ryokan Gizan</span><span>—</span></div>
+              <div class="opt-row"><span>Ryokan Kutsuroginoya Yuu</span><span>¥410</span></div>
+            </div>
+            <div class="opt-group">
+              <h4>Shin-Hotaka Onsen</h4>
+              <div class="opt-row"><span>Hodakaso Yamano Hotel</span><span>¥330</span></div>
+            </div>
+            <div class="opt-group">
+              <h4>Matsumoto side</h4>
+              <div class="opt-row"><span>Nakanoyu Onsen Ryokan</span><span>¥263</span></div>
+              <div class="opt-row"><span>Yumeguri no Yado Yoshiharu</span><span>¥321</span></div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+    <div class="day move">
+      <div class="rail"><div class="dot"></div></div>
+      <div class="day-body">
+        <div class="day-date">Sun, Oct 19</div>
+        <div class="day-title">Okuhida → Matsumoto → Tokyo</div>
+        <div class="transit">
+          <div class="leg-step"><span class="route-name">Alpico Bus, Hirayu/Fukuji → Matsumoto Bus Terminal (2 h 15–2 h 45)</span><span class="route-cost">~¥2,500–4,000</span></div>
+          <div class="leg-step"><span class="route-name">Limited Express Azusa, Matsumoto → Shinjuku (~2 h 40)</span><span class="route-cost">~¥6,600–7,500</span></div>
+          <div class="note">Arrival 19:00–20:00.</div>
+        </div>
+        <div class="activities"><ul><li>Matsumoto Castle, Nakamachi Street, Frog Street — a 3–5 hour stop</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOKYO -->
+  <section class="leg" id="tokyo">
+    <div class="leg-head">
+      <h2>Tokyo</h2>
+      <div class="leg-meta"><div class="leg-dates">Oct 19 – 23</div><div class="leg-nights">4 nights</div></div>
+    </div>
+
+    <div class="day stay">
+      <div class="rail"><div class="dot"></div><div class="line"></div></div>
+      <div class="day-body">
+        <div class="day-date">Sun, Oct 19</div>
+        <div class="day-title">Arrive &amp; check in</div>
+        <div class="activities"><ul><li>Evening: Omoide Yokocho or Golden Gai, walking distance from Shinjuku Station</li></ul></div>
+        <div class="lodging">
+          <div class="booked">
+            <div><div class="name">APA Hotel Asakusa Shin-Okachimachi Ekimae</div><div class="place">On Ueno/Okachimachi JR, plus Ginza &amp; Ōedo subway lines</div></div>
+            <div class="price">¥374<small>per night</small></div>
+          </div>
+          <div class="details">
+            <span><b>Check-in</b> 15:00–00:00</span>
+            <span><b>Check-out</b> before 10:00</span>
+            <span>No meals</span>
+          </div>
+          <div class="flag">Nearby: Kasagawa Suisan (all-you-can-eat sushi) and Kyoto Ito Okashi for breakfast (reserve ahead).</div>
+          <details class="more"><summary>3 other Ueno-area options considered</summary>
+            <div class="opt-group">
+              <div class="opt-row"><span>APA Hotel TKP Nippori Ekimae — near Nippori JR</span><span>¥361</span></div>
+              <div class="opt-row"><span>Tokyo Ueno New Izu Hotel — next to Ueno JR/subway, FamilyMart on site</span><span>¥377</span></div>
+              <div class="opt-row"><span>Hotel MyStays Ueno East — omakase nearby at 1/5 price</span><span>¥386</span></div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+
+    <div class="day stay">
+      <div class="rail"><div class="dot"></div><div class="line"></div></div>
+      <div class="day-body">
+        <div class="day-date">Mon, Oct 20</div>
+        <div class="day-title">Asakusa &amp; the river</div>
+        <div class="activities">
+          <ul>
+            <li><b>Morning</b> — Senso-ji Temple and the Kaminarimon gate; Sumida Park, Skytree views from the river</li>
+            <li><b>Midday</b> — tempura or unagi</li>
+            <li><b>Afternoon</b> — Tokyo Skytree (optional) or Yanaka</li>
+            <li><b>Evening</b> — izakaya dinner</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="day stay">
+      <div class="rail"><div class="dot"></div><div class="line"></div></div>
+      <div class="day-body">
+        <div class="day-date">Tue, Oct 21</div>
+        <div class="day-title">Meiji Jingu &amp; Shimokitazawa</div>
+        <div class="activities">
+          <ul>
+            <li><b>Morning</b> — Meiji Jingu's forested shrine precinct; Yoyogi Park</li>
+            <li><b>Midday</b> — Harajuku / Omotesando lunch</li>
+            <li><b>Afternoon</b> — Shimokitazawa's vintage and independent shops</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="day stay">
+      <div class="rail"><div class="dot"></div><div class="line"></div></div>
+      <div class="day-body">
+        <div class="day-date">Wed, Oct 22</div>
+        <div class="day-title">Mt. Takao, then Ginza — a chill ending</div>
+        <div class="activities">
+          <ul>
+            <li>Mt. Takao cable car, ~3 hours round trip</li>
+            <li>Ginza shopping — watches, stationery</li>
+            <li>Early dinner, pack, rest</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="day move">
+      <div class="rail"><div class="dot"></div></div>
+      <div class="day-body">
+        <div class="day-date">Thu, Oct 23</div>
+        <div class="day-title">Tokyo → Narita Airport</div>
+        <div class="transit">
+          <div class="leg-step"><span class="route-name">Taxi, APA Hotel Asakusa → Narita (~70 km, 60–90 min)</span><span class="route-cost">¥25,000–35,000</span></div>
+          <div class="note">Night fare including expressway tolls. Flight departs 08:20 — recommended taxi departure 04:15.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- APPENDIX -->
+<section class="appendix">
+  <div class="wrap" style="padding:0;">
+  <h2>Logistics</h2>
+  <div class="app-grid">
+    <div class="app-card">
+      <h3>Connectivity</h3>
+      <p>Pocket WiFi, picked up at Kansai Airport on arrival:</p>
+      <ul>
+        <li>Sakura Mobile — ¥12,180 for 18 days, two people</li>
+        <li>Japan Experience — ~€72</li>
+      </ul>
+      <p style="margin-top:10px;">ICOCA card loaded with ~¥5,000 on arrival works nationwide. Hotel-to-hotel luggage forwarding runs through Yamato TA-Q-BIN.</p>
+    </div>
+    <div class="app-card">
+      <h3>Pack</h3>
+      <ul>
+        <li>Trash bags — public bins are scarce</li>
+        <li>Toilet paper — some rest stops run out</li>
+        <li>A foldable shopping bag</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="table-scroll">
+  <table class="budget">
+    <caption>Transport budget</caption>
+    <thead><tr><th>Category</th><th>Cost</th></tr></thead>
+    <tbody>
+      <tr><td>Long-distance trains</td><td>¥25,000–35,000</td></tr>
+      <tr><td>Buses</td><td>¥10,000–14,000</td></tr>
+      <tr><td>Local trains &amp; subways</td><td>¥5,000–8,000</td></tr>
+      <tr><td>Luggage forwarding</td><td>¥5,000–7,000 per suitcase</td></tr>
+      <tr class="total"><td>Total, excluding the Narita taxi</td><td>¥45,000–64,000</td></tr>
+      <tr class="total"><td>Total, including the Narita taxi</td><td>¥70,000–99,000</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="table-scroll">
+  <table class="shop">
+    <caption>Tokyo shopping guide</caption>
+    <thead><tr><th>Looking for</th><th>Go to</th></tr></thead>
+    <tbody>
+      <tr><td>New luxury watches</td><td>Ginza — Grand Seiko, Wako</td></tr>
+      <tr><td>Vintage watches</td><td>Nakano Broadway (Jackroad), Ginza (Antiquorius)</td></tr>
+      <tr><td>Pens, stationery, zakka</td><td>Loft or Hands, Shibuya</td></tr>
+      <tr><td>Clothes, non-touristy</td><td>Shimokitazawa, Daikanyama</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="app-card" style="margin-bottom:10px;">
+    <h3>Tokyo food notes</h3>
+    <ul>
+      <li>Depachika food halls (Isetan Shinjuku, Mitsukoshi Ginza) — the best single place to graze</li>
+      <li>Soba and tempura in Asakusa; conveyor-belt sushi</li>
+      <li>Convenience-store onigiri and seasonal sweets</li>
+      <li>Kissaten — old-school coffee shops</li>
+    </ul>
+  </div>
+
+  <footer>
+    Built from the <a href="https://docs.google.com/document/d/1TIlq9KZXyGTkCgElBVYmJb2xh4eZq2Dc4rP6u0ErF08/edit?tab=t.jaznfm6gy4nh" target="_blank" rel="noopener">trip logistics doc</a> and the <a href="https://docs.google.com/spreadsheets/d/1KEfopk4_w0WgfT5RPv3vhofGadcdQMIAvez_qkbMdJo/edit?gid=26467024#gid=26467024" target="_blank" rel="noopener">hotel-comparison sheet</a>. The Hiroshima detour under Kyoto was priced but isn't part of the routed itinerary above — flag it if that's changed.
+  </footer>
+  </div>
+</section>
+
+</div>
+</section>
+
+<section id="panel-overview" class="panel">
+  <div class="ov-head">
+    <h2>Route at a glance</h2>
+    <p>8 bases, Oct 6–23 — how long at each stop, and how you get to the next one.</p>
+    <div class="ov-legend">
+      <span><i style="background:var(--accent)"></i>Train</span>
+      <span><i style="background:var(--accent-2)"></i>Bus</span>
+      <span><i style="background:var(--ink-faint)"></i>Taxi</span>
+    </div>
+  </div>
+  <div class="ov-flow">
+
+    <div class="ov-link train">
+      <div class="mode-dot"></div>
+      <div class="mode-text"><b>Kansai Airport</b> → Namba — Nankai Rapid / Airport Express</div>
+      <div class="mode-figs">35–45 min · ¥1,000–1,500</div>
+    </div>
+    <div class="ov-stop"><div class="place">Osaka <small>Namba</small></div><div class="nights">2 nights · Oct 6–8</div></div>
+
+    <div class="ov-link train">
+      <div class="mode-dot"></div>
+      <div class="mode-text">Metro + JR Special Rapid</div>
+      <div class="mode-figs">~1 h · ¥700–900</div>
+    </div>
+    <div class="ov-stop"><div class="place">Kyoto</div><div class="nights">4 nights · Oct 8–12</div></div>
+
+    <div class="ov-link train">
+      <div class="mode-dot"></div>
+      <div class="mode-text">Ltd. Exp. Hashidate + Tankai Bus, via Amanohashidate</div>
+      <div class="mode-figs">~3 h · ¥5,400–7,000</div>
+    </div>
+    <div class="ov-stop"><div class="place">Ine</div><div class="nights">1 night · Oct 12–13</div></div>
+
+    <div class="ov-link bus">
+      <div class="mode-dot"></div>
+      <div class="mode-text">Bus → Kyoto Tango Railway → JR</div>
+      <div class="mode-figs">~2 h · ¥2,500–4,000</div>
+    </div>
+    <div class="ov-stop"><div class="place">Kinosaki Onsen</div><div class="nights">1 night · Oct 13–14</div></div>
+
+    <div class="ov-link train">
+      <div class="mode-dot"></div>
+      <div class="mode-text">Ltd. Exp. Kinosaki + Thunderbird + Hokuriku Shinkansen</div>
+      <div class="mode-figs">3.5–4.5 h · ¥8,000–10,000</div>
+    </div>
+    <div class="ov-stop"><div class="place">Kanazawa</div><div class="nights">2 nights · Oct 14–16</div></div>
+
+    <div class="ov-link bus">
+      <div class="mode-dot"></div>
+      <div class="mode-text">Nohi/Hokutetsu Bus + Nohi Bus, via Shirakawa-go</div>
+      <div class="mode-figs">~2 h · ¥4,000–5,000</div>
+    </div>
+    <div class="ov-stop"><div class="place">Takayama</div><div class="nights">2 nights · Oct 16–18</div></div>
+
+    <div class="ov-link bus">
+      <div class="mode-dot"></div>
+      <div class="mode-text">Nohi Bus</div>
+      <div class="mode-figs">~90 min · ¥1,800–2,500</div>
+    </div>
+    <div class="ov-stop"><div class="place">Okuhida Onsen</div><div class="nights">1 night · Oct 18–19</div></div>
+
+    <div class="ov-link bus">
+      <div class="mode-dot"></div>
+      <div class="mode-text">Alpico Bus + Ltd. Exp. Azusa, via Matsumoto</div>
+      <div class="mode-figs">~5 h · ¥9,100–11,500</div>
+    </div>
+    <div class="ov-stop"><div class="place">Tokyo</div><div class="nights">4 nights · Oct 19–23</div></div>
+
+    <div class="ov-link taxi">
+      <div class="mode-dot"></div>
+      <div class="mode-text">Taxi → Narita Airport (04:15 departure for an 08:20 flight)</div>
+      <div class="mode-figs">60–90 min · ¥25,000–35,000</div>
+    </div>
+
+  </div>
+</section>
+
+<section id="panel-map" class="panel">
+  <div class="map-head">
+    <h2>The full route</h2>
+    <a href="https://www.google.com/maps/dir/Kansai+International+Airport/Osaka,+Japan/Kyoto,+Japan/Ine,+Kyoto,+Japan/Kinosaki+Onsen,+Japan/Kanazawa,+Japan/Takayama,+Gifu,+Japan/Okuhida+Onsen,+Gifu,+Japan/Tokyo,+Japan/Narita+International+Airport,+Japan" target="_blank" rel="noopener">Open full route in Google Maps ↗</a>
+  </div>
+  <div class="map-frame-wrap">
+    <iframe
+      src="https://www.google.com/maps?saddr=Kansai%20International%20Airport%2C%20Japan&daddr=Osaka%2C%20Japan+to:Kyoto%2C%20Japan+to:Ine%2C%20Kyoto%2C%20Japan+to:Kinosaki%20Onsen%2C%20Japan+to:Kanazawa%2C%20Japan+to:Takayama%2C%20Gifu%2C%20Japan+to:Okuhida%20Onsen%2C%20Gifu%2C%20Japan+to:Tokyo%2C%20Japan+to:Narita%20International%20Airport%2C%20Japan&output=embed"
+      loading="lazy"
+      title="Japan trip route map"></iframe>
+  </div>
+  <div class="map-fallback">This is Google's no-key embed, which occasionally fails to render a long multi-stop route — use the link above if the map looks empty or cut off.</div>
+</section>
+
+<script>
+  document.querySelectorAll('.tab-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+      document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
